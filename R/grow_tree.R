@@ -147,10 +147,13 @@ plot_tree <- function(tree, only_living = TRUE){
   # convert to clean_tree if necessary
   if(!is(tree, "clean_tree")){
     cat("Tree converted to class 'clean_tree' for plotting.")
-    tree <- clean_tree(tree, only_living = TRUE)}
+    tree <- clean_tree(tree, only_living = only_living)
+    }
   # make simple plot
-  ggplot(tree, aes(x = x, y = y, group = id, 
-                   size = 1 / generation, 
+  ggplot(tree, aes(x = x,
+                   y = y,
+                   group = id, 
+                   size  = 1 / generation, 
                    color = generation)) +
     geom_line(lineend = "round") +
     scale_color_tree() +
