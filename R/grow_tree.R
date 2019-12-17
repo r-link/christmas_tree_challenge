@@ -141,20 +141,25 @@ scale_color_tree <- function(...){
 # plot_tree() - function that automates simple tree plots ---------------------
 # uses a tree object as input, converting to clean_tree if necessary
 # the only_living argument is ignored if the input is already a clean_tree
-plot_tree <- function(tree, only_living = TRUE){
+plot_tree <- function(tree, 
+                      only_living = TRUE,    
+                      size = 1 / generation, # standard option for size:  function of generation
+                      color = generation){   # standard option for color: function of generation
   # check object type
   if (!inherits(tree, "treetab")) stop("Object is not a tree")
   # convert to clean_tree if necessary
   if(!is(tree, "clean_tree")){
-    cat("Tree converted to class 'clean_tree' for plotting.")
     tree <- clean_tree(tree, only_living = only_living)
-    }
+  }
+  # prepare size and color settings
+  tree <- mutate(tree, size = {{size}}, color = {{color}})
+  
   # make simple plot
   ggplot(tree, aes(x = x,
                    y = y,
                    group = id, 
-                   size  = 1 / generation, 
-                   color = generation)) +
+                   size  = size, 
+                   color = color)) +
     geom_line(lineend = "round") +
     scale_color_tree() +
     theme_void() +
