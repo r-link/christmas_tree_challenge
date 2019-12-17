@@ -39,9 +39,9 @@ segment-specific information.
 
 The tasks is as follows:
 
-| The **Christmas Tree Challenge**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1\.   Use `grow_tree()` with a set of functions for survival probability, segment length and angle that results in branching <br>       patterns typical for conifers (i.e. to ‘grow a Christmas tree’), <br> 2.   Use all available ggplot2 magic to make the tree look as realistical as possible, <br> 3.   Add as much graphical sugar as possible to decorate it in order to plot the *perfect Christmas tree*. <br> <br> Biological correctness does not matter for the challenge – everything is allowed, provided that the plots are **based only on data generated with the `grow_tree()` function** in the script in this repository. |
+| The Christmas Tree Challenge: Rules                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1\.   Use `grow_tree()` with a set of functions for survival probability, segment length and angle that results in *branching* <br>       *patterns typical for conifers* (i.e. to ‘grow a Christmas tree’), <br> 2.   Use all available ggplot2 magic to make the tree look as realistical as possible, <br> 3.   Add as much graphical sugar as possible to decorate it in order to plot the *perfect Christmas tree*. <br> <br> Biological correctness does not matter for the challenge – everything is allowed, provided that the plots are **based only on data generated with the `grow_tree()` function** in the script in this repository. |
 
 The most realistical and beautiful trees win (though we are neither sure
 about the price nor how to determine the winner).
@@ -63,8 +63,8 @@ library(rlang)
 source("R/grow_tree.R")
 ```
 
-The script then should care of all things. You just have to provide it
-with its desired inputs, i.e. functions for survival probability,
+The script then should take care of all things. You just have to provide
+it with its desired inputs, i.e. functions for survival probability,
 segment length and angle.
 
 ### Simple example
@@ -129,8 +129,8 @@ plot_tree(tree1, only_living = TRUE)
 ![](README_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
 As you see, even with only 10 iterations and very simplistic branching
-rules, the output looks similar to a real plant. It has a vibe of very
-early land plants, though, and sort of reminds me of the branching
+rules, the output looks very similar to a real plant. It has a vibe of
+very early land plants, though, and sort of reminds me of the branching
 patterns of plants like
 [Aglaophyton](https://en.wikipedia.org/wiki/Aglaophyton).
 
@@ -251,8 +251,8 @@ Internally, `plot_tree()` just gets the tree object in a form that is
 digestible for `ggplot()`, and then plots it with some modifications to
 scales and themes.
 
-If you want to set the plotting parameters yourself, you can use the
-`clean_tree()` function yourself to convert `treedat` objects into a
+If you want to set the plotting parameters more flexibly, you can use
+the `clean_tree()` function yourself to convert `treedat` objects into a
 long table format that is more appropriate for plotting:
 
 ``` r
